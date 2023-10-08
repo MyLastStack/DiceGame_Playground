@@ -1,14 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class GoalGUIManager : MonoBehaviour
 {
-    
+    [SerializeField] InputAction claimOnOff;
+
     [SerializeField]
     ClaimButton[] goalButtons;
     public static GoalGUIManager Instance;
+
+    public bool alreadyOff;
 
     private void Awake()
     {
@@ -20,6 +24,23 @@ public class GoalGUIManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        alreadyOff = false;
+    }
+
+    private void Update()
+    {
+        if (claimOnOff.WasPressedThisFrame())
+        {
+            if (!alreadyOff)
+            {
+                ProtectButtons();
+            }
+            else
+            {
+                ReleaseButtons();
+            }
+        }
     }
 
     public void ProtectButtons()
@@ -28,17 +49,19 @@ public class GoalGUIManager : MonoBehaviour
         {
             button.GetComponent<Button>().interactable = false;
         }
+        alreadyOff = true;
     }
     public void ReleaseButtons()
     {
         foreach (ClaimButton button in goalButtons)
         {
-            if (!button.m_goalClaimed) 
+            if (!button.m_goalClaimed)
             {
                 button.GetComponent<Button>().interactable = true;
             }
             
         }
+        alreadyOff = false;
     }
     #region -- CLAIMING COMBOS
 
@@ -73,6 +96,18 @@ public class GoalGUIManager : MonoBehaviour
     public void TryClaimingFullHouse()
     {
         goalButtons[5].Claim();
+    }
+    #endregion
+
+    #region -- Enabling and disabling claim
+    private void OnEnable()
+    {
+        claimOnOff.Enable();
+    }
+
+    private void OnDisable()
+    {
+        claimOnOff.Disable();
     }
     #endregion
 }

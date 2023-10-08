@@ -7,7 +7,9 @@ public class DiceGameManager : MonoBehaviour
 {
     public Dice[] Dicelist;
     public DiceButton[] KeepDiceButtons;
-    
+
+    public int[] CountDiceValue;
+
     public bool isRolling;
 
     public static DiceGameManager Instance;
@@ -24,7 +26,7 @@ public class DiceGameManager : MonoBehaviour
             Instance = this;
             rollCount = 0;
             score = 0;
-            rollsLeft = rollsMax;
+            rollsLeft = 2;
         }
         else
         {
@@ -45,17 +47,28 @@ public class DiceGameManager : MonoBehaviour
         isRolling = true;
         CheckRollsLeft();
         GoalGUIManager.Instance.ProtectButtons();
+
+        // Reset Count Value
+        CountDiceValue = new int[6];
+
         for (int d = 0; d < Dicelist.Length; d++)
         {
             
             if (KeepDiceButtons[d].m_keepDice) 
             {
+                Debug.Log(Dicelist[d].newValue);
+                CountDiceValue[Dicelist[d].newValue]++;
                 continue;
             }
             else
             {
                 Dicelist[d].RollToRandomSide();
             }
+
+            Debug.Log(Dicelist[d].newValue);
+            // Record the dice count
+            CountDiceValue[Dicelist[d].newValue]++;
+
             yield return new WaitForSeconds(0.125f);
         }
         isRolling = false;

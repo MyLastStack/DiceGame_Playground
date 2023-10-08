@@ -9,7 +9,7 @@ public class Dice : MonoBehaviour
 {
     [HideInInspector]
     [SerializeField] Sprite[] DiceSprites;
-
+    public int newValue;
 
 
     [SerializeField, Tooltip("The face value of the die.")]
@@ -18,7 +18,7 @@ public class Dice : MonoBehaviour
 
     public int RollToRandomSide()
     {
-        int newValue = Random.Range(1, 6);
+        newValue = Random.Range(1, 6);
         gameObject.GetComponent<SpriteRenderer>().sprite = DiceSprites[newValue - 1];
         return newValue;
     }

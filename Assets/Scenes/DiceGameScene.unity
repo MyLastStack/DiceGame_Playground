@@ -5295,7 +5295,7 @@ CanvasRenderer:
   m_CullTransparentMesh: 1
 --- !u!1 &1695803760
 GameObject:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -5312,7 +5312,7 @@ GameObject:
   m_IsActive: 1
 --- !u!114 &1695803761
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -5453,7 +5453,7 @@ MonoBehaviour:
   willGameObjectsBeHidden: 1
 --- !u!4 &1695803762
 Transform:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -6526,6 +6526,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0648390ae86c0924eb6d09b993e81a7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  claimOnOff:
+    m_Name: Claim On Off
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 97603ade-4898-47a3-a208-c127e6dedd24
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 1914b2eb-e567-4e83-a42e-9c027a9d1639
+      m_Path: <Keyboard>/h
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Claim On Off
+      m_Flags: 0
+    m_Flags: 0
   goalButtons:
   - {fileID: 980515956}
   - {fileID: 981190175}
@@ -6533,6 +6550,7 @@ MonoBehaviour:
   - {fileID: 1083829926}
   - {fileID: 1768363806}
   - {fileID: 1915436158}
+  alreadyOff: 0
 --- !u!1 &1953197224
 GameObject:
   m_ObjectHideFlags: 1
