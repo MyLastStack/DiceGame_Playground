@@ -36,8 +36,6 @@ public class DiceEvaluator : MonoBehaviour
         dVH = DiceValueCount;
     }
 
-
-
     private bool LargeStraightCheck()
     {
         bool lrgstr = false;
