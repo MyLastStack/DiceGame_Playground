@@ -76,8 +76,9 @@ public class DiceGameManager : MonoBehaviour
 
         isRolling = false;
         GoalGUIManager.Instance.ReleaseButtons();
-        DiceEvaluator.Instance.DiceValueOnHand(CountDiceValue);
 
+        // Dice Evaluator Action
+        DiceEvaluator.Instance.DiceValueOnHand(CountDiceValue);
         for (int index = 0; index < DiceEvaluator.Instance.category.Length; index++)
         {
             if (!DiceEvaluator.Instance.category[index])

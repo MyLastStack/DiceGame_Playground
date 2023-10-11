@@ -6,6 +6,8 @@ public class KeepEvaluator : MonoBehaviour
 {
     public static KeepEvaluator Instance;
 
+    public int[] kVH;
+
     // Start is called before the first frame update
     private void Awake()
     {
@@ -24,4 +26,6 @@ public class KeepEvaluator : MonoBehaviour
     {
         
     }
+
+
 }
