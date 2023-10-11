@@ -10,7 +10,7 @@ public class DiceEvaluator : MonoBehaviour
 
     public int[] dVH;
 
-    public bool lrgStr, smStr, fHouse, fourK, threeK, twoP;
+    public bool[] category = new bool[6];
 
     private void Awake()
     {
@@ -35,12 +35,12 @@ public class DiceEvaluator : MonoBehaviour
     {
         dVH = DiceValueCount;
 
-        lrgStr = LargeStraightCheck();
-        smStr = SmallStraightCheck();
-        fHouse = FullHouseCheck();
-        fourK = FourKindCheck();
-        threeK = ThreeKindCheck();
-        twoP = TwoPairCheck();
+        category[0] = LargeStraightCheck();
+        category[1] = SmallStraightCheck();
+        category[2] = FullHouseCheck();
+        category[3] = FourKindCheck();
+        category[4] = ThreeKindCheck();
+        category[5] = TwoPairCheck();
     }
 
     private bool LargeStraightCheck()
