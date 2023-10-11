@@ -135,7 +135,7 @@ public class DiceEvaluator : MonoBehaviour
 
         for (int i = 0; i < dVH.Length; i++ )
         {
-            if (dVH[i] == 4)
+            if (dVH[i] >= 4)
             {
                 fourk = true;
                 break;
@@ -150,7 +150,7 @@ public class DiceEvaluator : MonoBehaviour
 
         for (int i = 0; i < dVH.Length; i++)
         {
-            if (dVH[i] == 3)
+            if (dVH[i] >= 3)
             {
                 threek = true;
                 break;
@@ -165,7 +165,7 @@ public class DiceEvaluator : MonoBehaviour
 
         for(int i = 0; i < dVH.Length; i++)
         {
-            if (dVH[i] == 2)
+            if (dVH[i] >= 2)
             {
                 if (firstP)
                 {
