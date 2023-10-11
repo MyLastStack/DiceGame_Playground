@@ -12,6 +12,8 @@ public class DiceGameManager : MonoBehaviour
 
     public bool isRolling;
 
+    public DiceEvaluator DiceEvaluator;
+
     public static DiceGameManager Instance;
 
     public int rollCount = 0;
