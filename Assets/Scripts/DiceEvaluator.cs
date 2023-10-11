@@ -48,9 +48,24 @@ public class DiceEvaluator : MonoBehaviour
 
     private void OneAwayStr()
     {
+        //Counting zeroes
+        int maxCountZero = 0;
+        int runningCountZero = 0;
+
         for (int i = 0; i < dVH.Length; i++)
         {
-
+            if (dVH[i] == 0)
+            {
+                runningCountZero++;
+                if (runningCountZero > maxCountZero)
+                {
+                    maxCountZero = runningCountZero;
+                }
+            }
+        }
+        if (maxCountZero == 2 && !category[2])
+        {
+            // Something happens
         }
     }
 
@@ -90,7 +105,6 @@ public class DiceEvaluator : MonoBehaviour
 
         return lrgstr;
     }
-
     private bool SmallStraightCheck()
     {
         bool smstr = false;
