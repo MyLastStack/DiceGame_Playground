@@ -36,6 +36,8 @@ public class DiceEvaluator : MonoBehaviour
         dVH = DiceValueCount;
     }
 
+
+
     private bool LargeStraightCheck()
     {
         bool lrgstr = false;
@@ -109,17 +111,14 @@ public class DiceEvaluator : MonoBehaviour
             {
                 three = true;
             }
-            else
-            {
-                three = false;
-            }
             if (dVH[i] == 2)
             {
                 pair = true;
             }
-            else
+
+            if (three && pair)
             {
-                pair = false;
+                break;
             }
         }
 
