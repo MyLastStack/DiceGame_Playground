@@ -59,7 +59,7 @@ public class DiceGameManager : MonoBehaviour
             if (KeepDiceButtons[d].m_keepDice) 
             {
                 Debug.Log(Dicelist[d].newValue);
-                CountDiceValue[Dicelist[d].newValue]++;
+                CountDiceValue[Dicelist[d - 1].newValue]++;
                 continue;
             }
             else
@@ -69,10 +69,16 @@ public class DiceGameManager : MonoBehaviour
 
             Debug.Log(Dicelist[d].newValue);
             // Record the dice count
-            CountDiceValue[Dicelist[d].newValue]++;
+            CountDiceValue[Dicelist[d - 1].newValue]++;
 
             yield return new WaitForSeconds(0.125f);
         }
+
+        for (int d = 0; d < CountDiceValue.Length; d++)
+        {
+            Debug.Log(CountDiceValue[d]);
+        }
+
         isRolling = false;
         GoalGUIManager.Instance.ReleaseButtons();
         rollCount += 1;
