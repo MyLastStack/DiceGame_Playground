@@ -50,6 +50,11 @@ public class GoalGUIManager : MonoBehaviour
         }
         alreadyOff = true;
     }
+    public void ProtectSpecificButtons()
+    {
+
+    }
+
     public void ReleaseButtons()
     {
         foreach (ClaimButton button in goalButtons)

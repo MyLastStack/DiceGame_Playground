@@ -10,7 +10,7 @@ public class DiceEvaluator : MonoBehaviour
 
     public int[] dVH;
 
-    public bool lgStr, smStr, fHouse, fourK, threeK, twoP;
+    public bool lrgStr, smStr, fHouse, fourK, threeK, twoP;
 
     private void Awake()
     {
@@ -34,6 +34,13 @@ public class DiceEvaluator : MonoBehaviour
     public void DiceValueOnHand(int[] DiceValueCount)
     {
         dVH = DiceValueCount;
+
+        lrgStr = LargeStraightCheck();
+        smStr = SmallStraightCheck();
+        fHouse = FullHouseCheck();
+        fourK = FourKindCheck();
+        threeK = ThreeKindCheck();
+        twoP = TwoPairCheck();
     }
 
     private bool LargeStraightCheck()
@@ -122,7 +129,7 @@ public class DiceEvaluator : MonoBehaviour
 
         return three && pair;
     }
-    private bool FourKind()
+    private bool FourKindCheck()
     {
         bool fourk = false;
 
@@ -137,7 +144,7 @@ public class DiceEvaluator : MonoBehaviour
 
         return fourk;
     }
-    private bool ThreeKind()
+    private bool ThreeKindCheck()
     {
         bool threek = false;
 
@@ -152,7 +159,7 @@ public class DiceEvaluator : MonoBehaviour
 
         return threek;
     }
-    private bool TwoPair()
+    private bool TwoPairCheck()
     {
         bool firstP = false, secondP = false;
 
