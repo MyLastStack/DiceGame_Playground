@@ -7,7 +7,6 @@ public class DiceGameManager : MonoBehaviour
 {
     public Dice[] Dicelist;
     public DiceButton[] KeepDiceButtons;
-    public DiceEvaluator DiceEvaluator;
 
     public int[] CountDiceValue;
 
