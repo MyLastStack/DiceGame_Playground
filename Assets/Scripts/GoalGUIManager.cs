@@ -50,9 +50,9 @@ public class GoalGUIManager : MonoBehaviour
         }
         alreadyOff = true;
     }
-    public void ProtectSpecificButtons()
+    public void ProtectSpecificButtons(int index)
     {
-
+        goalButtons[index].GetComponent<Button>().interactable = false;
     }
 
     public void ReleaseButtons()
@@ -66,6 +66,13 @@ public class GoalGUIManager : MonoBehaviour
             
         }
         alreadyOff = false;
+    }
+    public void ReleaseSpecificButtons(int index)
+    {
+        if (!goalButtons[index].m_goalClaimed)
+        {
+            goalButtons[index].GetComponent<Button>().interactable = true;
+        }
     }
     #region -- CLAIMING COMBOS
 
