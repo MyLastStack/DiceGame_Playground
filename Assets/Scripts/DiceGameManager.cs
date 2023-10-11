@@ -59,7 +59,7 @@ public class DiceGameManager : MonoBehaviour
             if (KeepDiceButtons[d].m_keepDice) 
             {
                 Debug.Log(Dicelist[d].newValue);
-                CountDiceValue[Dicelist[d].newValue]++;
+                CountDiceValue[Dicelist[d].newValue - 1]++;
                 continue;
             }
             else
@@ -69,7 +69,7 @@ public class DiceGameManager : MonoBehaviour
 
             Debug.Log(Dicelist[d].newValue);
             // Record the dice count
-            CountDiceValue[Dicelist[d].newValue]++;
+            CountDiceValue[Dicelist[d].newValue - 1]++;
 
             yield return new WaitForSeconds(0.125f);
         }
