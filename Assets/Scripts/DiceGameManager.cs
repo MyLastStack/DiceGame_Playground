@@ -12,8 +12,6 @@ public class DiceGameManager : MonoBehaviour
 
     public bool isRolling;
 
-    public DiceEvaluator DiceEvaluator;
-
     public static DiceGameManager Instance;
 
     public int rollCount = 0;
@@ -74,13 +72,24 @@ public class DiceGameManager : MonoBehaviour
             yield return new WaitForSeconds(0.125f);
         }
 
-        for (int d = 0; d < CountDiceValue.Length; d++)
-        {
-            Debug.Log(CountDiceValue[d]);
-        }
+        Debug.Log(string.Join("; ", CountDiceValue));
 
         isRolling = false;
         GoalGUIManager.Instance.ReleaseButtons();
+        DiceEvaluator.Instance.DiceValueOnHand(CountDiceValue);
+
+        for (int index = 0; index < DiceEvaluator.Instance.category.Length; index++)
+        {
+            if (!DiceEvaluator.Instance.category[index])
+            {
+                GoalGUIManager.Instance.ProtectSpecificButtons(index);
+            }
+            else
+            {
+                GoalGUIManager.Instance.ReleaseSpecificButtons(index);
+            }
+        }
+
         rollCount += 1;
         StatsGUI.Instance.UpdateStatsGUI();
     }

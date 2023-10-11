@@ -35,12 +35,12 @@ public class DiceEvaluator : MonoBehaviour
     {
         dVH = DiceValueCount;
 
-        category[0] = LargeStraightCheck();
-        category[1] = SmallStraightCheck();
-        category[2] = FullHouseCheck();
-        category[3] = FourKindCheck();
-        category[4] = ThreeKindCheck();
-        category[5] = TwoPairCheck();
+        category[3] = LargeStraightCheck();
+        category[2] = SmallStraightCheck();
+        category[5] = FullHouseCheck();
+        category[1] = FourKindCheck();
+        category[0] = ThreeKindCheck();
+        category[4] = TwoPairCheck();
     }
 
     private bool LargeStraightCheck()

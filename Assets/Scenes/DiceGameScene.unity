@@ -311,6 +311,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 855e85ca2c78b6e489dc4e98d37c635c, type: 3}
   - {fileID: 21300000, guid: 2a73f577096c9244abc1dec21d00bd40, type: 3}
   - {fileID: 21300000, guid: f428b53da72b3834fb5557643babc09e, type: 3}
+  newValue: 0
   m_dieValue: 0
 --- !u!212 &126052726
 SpriteRenderer:
@@ -870,6 +871,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 855e85ca2c78b6e489dc4e98d37c635c, type: 3}
   - {fileID: 21300000, guid: 2a73f577096c9244abc1dec21d00bd40, type: 3}
   - {fileID: 21300000, guid: f428b53da72b3834fb5557643babc09e, type: 3}
+  newValue: 0
   m_dieValue: 0
 --- !u!212 &364161492
 SpriteRenderer:
@@ -3757,6 +3759,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1063446261}
   - component: {fileID: 1063446262}
+  - component: {fileID: 1063446263}
   m_Layer: 0
   m_Name: DiceManager
   m_TagString: Untagged
@@ -3808,10 +3811,26 @@ MonoBehaviour:
   - {fileID: 2055635140}
   - {fileID: 1727267431}
   - {fileID: 1296324475}
+  CountDiceValue: 
   isRolling: 0
+  DiceEvaluator: {fileID: 0}
   rollCount: 0
   score: 0
   rollsLeft: 0
+--- !u!114 &1063446263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1063446260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f30a0bf2833b034ba7ab2d117e77c1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dVH: 
+  category: 000000000000
 --- !u!1 &1075836992
 GameObject:
   m_ObjectHideFlags: 1
@@ -4152,6 +4171,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 855e85ca2c78b6e489dc4e98d37c635c, type: 3}
   - {fileID: 21300000, guid: 2a73f577096c9244abc1dec21d00bd40, type: 3}
   - {fileID: 21300000, guid: f428b53da72b3834fb5557643babc09e, type: 3}
+  newValue: 0
   m_dieValue: 0
 --- !u!212 &1193990248
 SpriteRenderer:
@@ -5056,6 +5076,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 855e85ca2c78b6e489dc4e98d37c635c, type: 3}
   - {fileID: 21300000, guid: 2a73f577096c9244abc1dec21d00bd40, type: 3}
   - {fileID: 21300000, guid: f428b53da72b3834fb5557643babc09e, type: 3}
+  newValue: 0
   m_dieValue: 0
 --- !u!212 &1594013189
 SpriteRenderer:
@@ -5214,6 +5235,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 855e85ca2c78b6e489dc4e98d37c635c, type: 3}
   - {fileID: 21300000, guid: 2a73f577096c9244abc1dec21d00bd40, type: 3}
   - {fileID: 21300000, guid: f428b53da72b3834fb5557643babc09e, type: 3}
+  newValue: 0
   m_dieValue: 0
 --- !u!1 &1688009929
 GameObject:
