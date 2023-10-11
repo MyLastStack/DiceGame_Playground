@@ -33,7 +33,10 @@ public class DiceEvaluator : MonoBehaviour
 
     public void DiceValueOnHand(int[] DiceValueCount)
     {
-        dVH = DiceValueCount;
+        for (int i = 0; i < DiceValueCount.Length; i++)
+        {
+            dVH[i] = DiceValueCount[i];
+        }
 
         category[3] = LargeStraightCheck();
         category[2] = SmallStraightCheck();
@@ -41,6 +44,19 @@ public class DiceEvaluator : MonoBehaviour
         category[1] = FourKindCheck();
         category[0] = ThreeKindCheck();
         category[4] = TwoPairCheck();
+    }
+
+    private void OneAwayStr()
+    {
+        for (int i = 0; i < dVH.Length; i++)
+        {
+
+        }
+    }
+
+    private void OneAwayMatch()
+    {
+
     }
 
     private bool LargeStraightCheck()
