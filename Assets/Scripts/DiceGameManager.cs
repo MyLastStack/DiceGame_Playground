@@ -19,6 +19,8 @@ public class DiceGameManager : MonoBehaviour
     public int rollsLeft = 0;
     private int rollsMax = 1;
 
+    public int highest = 99;
+
     private void Awake()
     {
         if (Instance == null)
@@ -56,7 +58,6 @@ public class DiceGameManager : MonoBehaviour
             
             if (KeepDiceButtons[d].m_keepDice) 
             {
-                Debug.Log(Dicelist[d].newValue);
                 CountDiceValue[Dicelist[d].newValue - 1]++;
                 continue;
             }
@@ -65,7 +66,6 @@ public class DiceGameManager : MonoBehaviour
                 Dicelist[d].RollToRandomSide();
             }
 
-            Debug.Log(Dicelist[d].newValue);
             // Record the dice count
             CountDiceValue[Dicelist[d].newValue - 1]++;
 
@@ -91,6 +91,12 @@ public class DiceGameManager : MonoBehaviour
             }
         }
 
+        if (rollsLeft == 0)
+        {
+            yield return new WaitForSeconds(0.5f);
+            ClaimToggle(CountDiceValue);
+        }
+
         rollCount += 1;
         StatsGUI.Instance.UpdateStatsGUI();
     }
@@ -98,6 +104,7 @@ public class DiceGameManager : MonoBehaviour
     void CheckRollsLeft()
     {
         rollsLeft -= 1;
+        highest = 99;
         if (rollsLeft < 0)
         {
             foreach (var d in KeepDiceButtons)
@@ -122,14 +129,44 @@ public class DiceGameManager : MonoBehaviour
 
         for (int index = 0; index < DiceEvaluator.Instance.category.Length; index++)
         {
-            if (!DiceEvaluator.Instance.category[index])
+            #region other method
+            //if (!DiceEvaluator.Instance.category[index])
+            //{
+            //    GoalGUIManager.Instance.ProtectSpecificButtons(index);
+            //}
+            //else
+            //{
+            //    GoalGUIManager.Instance.ReleaseSpecificButtons(index);
+            //    for (int i = 0; i < priority.Length; i++)
+            //    {
+            //        Debug.Log($"Combine{index} - Placement{i}");
+            //        if (index == priority[i])
+            //        {
+            //            highest = index;
+            //            Debug.Log($"Highest: {index} - #{i}");
+            //        }
+            //    }
+            //}
+            #endregion
+
+            if (GoalGUIManager.Instance.goalButtons[index].GetComponent<Button>().interactable)
             {
-                GoalGUIManager.Instance.ProtectSpecificButtons(index);
+                for (int i = 0; i < priority.Length; i++)
+                {
+                    if (index == priority[i])
+                    {
+                        highest = index;
+                        Debug.Log($"Highest: {index} - #{i}");
+                    }
+                }
             }
-            else
-            {
-                GoalGUIManager.Instance.ReleaseSpecificButtons(index);
-            }
+        }
+
+        Debug.Log(highest);
+
+        if (!GoalGUIManager.Instance.goalButtons[highest].m_goalClaimed)
+        {
+            GoalGUIManager.Instance.goalButtons[highest].Claim();
         }
     }
 

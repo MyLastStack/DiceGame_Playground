@@ -8,7 +8,7 @@ public class GoalGUIManager : MonoBehaviour
 {
     [SerializeField] InputAction claimOnOff;
 
-    [SerializeField] ClaimButton[] goalButtons;
+    [SerializeField] public ClaimButton[] goalButtons;
     public static GoalGUIManager Instance;
 
     public bool alreadyOff;
