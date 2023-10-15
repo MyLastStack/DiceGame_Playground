@@ -63,15 +63,33 @@ public class DiceEvaluator : MonoBehaviour
                 }
             }
         }
-        if (maxCountZero == 2 && !category[2])
+        if (maxCountZero == 2 && category[2])
         {
-            // Something happens
+            
         }
     }
 
     private void OneAwayMatch()
     {
+        if (!category[5])
+        {
+            bool chk1 = false;
+            bool chk2 = false;
 
+            for (int i = 0; i < dVH.Length; i++)
+            {
+                if (dVH[i] == 2)
+                {
+                    chk1 = true;
+                }
+                else if (dVH[i] == 2 && chk1)
+                {
+                    chk2 = true;
+                }
+
+                if (chk1 && chk2) break;
+            }
+        }
     }
 
     private bool LargeStraightCheck()
@@ -129,10 +147,7 @@ public class DiceEvaluator : MonoBehaviour
             }
         }
 
-        if (maxValue == 4)
-        {
-            smstr = true;
-        }
+        if (maxValue == 4) smstr = true;
 
         return smstr;
     }
@@ -151,10 +166,7 @@ public class DiceEvaluator : MonoBehaviour
                 pair = true;
             }
 
-            if (three && pair)
-            {
-                break;
-            }
+            if (three && pair) break;
         }
 
         return three && pair;
