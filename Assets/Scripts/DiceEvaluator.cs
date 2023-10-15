@@ -194,19 +194,19 @@ public class DiceEvaluator : MonoBehaviour
         priority[4] = OneOffFullHouse();
         priority[5] = OneOffLrgStr();
 
-        for (int i = 0; i < priority.Length; i++)
-        {
-            if (!priority[i]) continue;
-            for (int d = 0; d < priority.Length; d++)
-            {
-                if (!priority[d]) continue; else if (d >= i) continue;
+        //for (int i = 0; i < priority.Length; i++)
+        //{
+        //    if (!priority[i]) continue;
+        //    for (int d = 0; d < priority.Length; d++)
+        //    {
+        //        if (!priority[d]) continue; else if (d <= i) continue;
 
-                if (priority[d] && d > i)
-                {
-                    priority[i] = false;
-                }
-            }
-        }
+        //        if (priority[d] && d > i)
+        //        {
+        //            priority[i] = false;
+        //        }
+        //    }
+        //}
     }
 
     #region OneOffs

@@ -108,6 +108,31 @@ public class DiceGameManager : MonoBehaviour
         }
     }
 
+    void ClaimToggle(int[] DiceValueCount)
+    {
+        DiceEvaluator.Instance.DiceValueToKeep(CountDiceValue);
+
+        int[] priority = new int[6];
+        priority[0] = 0;
+        priority[1] = 4;
+        priority[2] = 1;
+        priority[3] = 2;
+        priority[4] = 5;
+        priority[5] = 3;
+
+        for (int index = 0; index < DiceEvaluator.Instance.category.Length; index++)
+        {
+            if (!DiceEvaluator.Instance.category[index])
+            {
+                GoalGUIManager.Instance.ProtectSpecificButtons(index);
+            }
+            else
+            {
+                GoalGUIManager.Instance.ReleaseSpecificButtons(index);
+            }
+        }
+    }
+
     void KeepRolls(int[] DiceValueCount)
     {
 
