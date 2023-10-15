@@ -110,6 +110,9 @@ public class DiceGameManager : MonoBehaviour
 
     void KeepRolls(int[] DiceValueCount)
     {
-        
+
+        // Toggle off anything over 1 for straights
+        // If a zero is in the middle like 1 1 0 1 1 1
+            // Toggle off the last number
     }
 }
