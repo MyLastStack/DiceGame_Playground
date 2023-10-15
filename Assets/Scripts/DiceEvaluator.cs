@@ -46,52 +46,6 @@ public class DiceEvaluator : MonoBehaviour
         category[4] = TwoPairCheck();
     }
 
-    private void OneAwayStr()
-    {
-        //Counting zeroes
-        int maxCountZero = 0;
-        int runningCountZero = 0;
-
-        for (int i = 0; i < dVH.Length; i++)
-        {
-            if (dVH[i] == 0)
-            {
-                runningCountZero++;
-                if (runningCountZero > maxCountZero)
-                {
-                    maxCountZero = runningCountZero;
-                }
-            }
-        }
-        if (maxCountZero == 2 && category[2])
-        {
-            
-        }
-    }
-
-    private void OneAwayMatch()
-    {
-        if (!category[5])
-        {
-            bool chk1 = false;
-            bool chk2 = false;
-
-            for (int i = 0; i < dVH.Length; i++)
-            {
-                if (dVH[i] == 2)
-                {
-                    chk1 = true;
-                }
-                else if (dVH[i] == 2 && chk1)
-                {
-                    chk2 = true;
-                }
-
-                if (chk1 && chk2) break;
-            }
-        }
-    }
-
     private bool LargeStraightCheck()
     {
         bool lrgstr = false;
