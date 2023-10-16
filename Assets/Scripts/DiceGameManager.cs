@@ -189,7 +189,6 @@ public class DiceGameManager : MonoBehaviour
             {
                 chosenPrio = i;
             }
-            else { continue; }
         }
 
         switch (chosenPrio)
@@ -403,9 +402,5 @@ public class DiceGameManager : MonoBehaviour
             default:
                 break;
         }
-
-        // Toggle off anything over 1 for straights
-        // If a zero is in the middle like 1 1 0 1 1 1
-            // Toggle off the last number
     }
 }
