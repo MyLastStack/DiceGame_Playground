@@ -350,15 +350,12 @@ public class DiceGameManager : MonoBehaviour
                         }
                     }
 
-                    if (pt1 != 99)
+                    for (int i = 0; i < DiceValueCount.Length; i++)
                     {
-                        for (int i = 0; i < DiceValueCount.Length; i++)
+                        if (DiceValueCount[i] >= 2)
                         {
-                            if (DiceValueCount[i] >= 2)
-                            {
-                                pt2 = i;
-                                break;
-                            }
+                            pt2 = i;
+                            break;
                         }
                     }
 
