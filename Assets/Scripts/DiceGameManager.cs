@@ -191,6 +191,8 @@ public class DiceGameManager : MonoBehaviour
             }
         }
 
+        Debug.Log(chosenPrio);
+
         switch (chosenPrio)
         {
             case 0:
@@ -346,7 +348,7 @@ public class DiceGameManager : MonoBehaviour
                 break;
             case 5:
                 int highestCount = 0;
-                int indexFound = 0;
+                int indexFound = 99;
 
                 for (int i = 0; i < DiceValueCount.Length; i++)
                 {
@@ -358,7 +360,7 @@ public class DiceGameManager : MonoBehaviour
                     }
                 }
 
-                if (indexFound != 0) // if there is a value over 1
+                if (indexFound != 99) // if there is a value over 1
                 {
                     if (highestCount >= 2)
                     {
@@ -366,11 +368,14 @@ public class DiceGameManager : MonoBehaviour
                         {
                             if (Dicelist[d].newValue - 1 == indexFound)
                             {
-                                if (highestCount >= 2)
+                                if (highestCount < 2)
+                                {
+                                    break;
+                                }
+                                else
                                 {
                                     highestCount--;
                                 }
-                                else break;
                             }
 
                             KeepDiceButtons[d].ToggleDice();
