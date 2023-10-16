@@ -314,28 +314,66 @@ public class DiceGameManager : MonoBehaviour
             case 4:
                 int pt1 = 99;
                 int pt2 = 99;
+                bool firstType = false;
+                bool secondType = false;
 
-                for (int i = 0; i < DiceValueCount.Length; i++)
-                {
-                    if (DiceValueCount[i] >= 3)
-                    {
-                        pt1 = i;
-                    }
-                }
-
-                if (pt1 != 99)
+                if (pt1 == 99 && pt2 == 99)
                 {
                     for (int i = 0; i < DiceValueCount.Length; i++)
                     {
-                        if (DiceValueCount[i] >= 1)
+                        if (DiceValueCount[i] >= 3)
                         {
-                            pt2 = i;
-                            break;
+                            pt1 = i;
                         }
+                    }
+
+                    if (pt1 != 99)
+                    {
+                        for (int i = 0; i < DiceValueCount.Length; i++)
+                        {
+                            if (DiceValueCount[i] >= 1)
+                            {
+                                pt2 = i;
+                                break;
+                            }
+                        }
+                    }
+
+                    if (pt1 == 99)
+                    {
+                        firstType = false;
                     }
                 }
 
-                if (pt1 != 99)
+                if (!firstType)
+                {
+                    for (int i = 0; i < DiceValueCount.Length; i++)
+                    {
+                        if (DiceValueCount[i] >= 2)
+                        {
+                            pt1 = i;
+                        }
+                    }
+
+                    if (pt1 != 99)
+                    {
+                        for (int i = 0; i < DiceValueCount.Length; i++)
+                        {
+                            if (DiceValueCount[i] >= 2)
+                            {
+                                pt2 = i;
+                                break;
+                            }
+                        }
+                    }
+
+                    if (pt1 == 99 && pt2 == 99)
+                    {
+                        secondType = false;
+                    }
+                }
+
+                if (firstType || secondType)
                 {
                     int keep3 = 3;
                     for (int d = 0; d < Dicelist.Length; d++)
