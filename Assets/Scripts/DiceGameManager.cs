@@ -319,6 +319,10 @@ public class DiceGameManager : MonoBehaviour
                     {
                         pt1 = i;
                     }
+                }
+
+                for (int i = 0; i < DiceValueCount.Length; i++)
+                {
                     if (pt1 != 99 && DiceValueCount[i] >= 1)
                     {
                         pt2 = i;
