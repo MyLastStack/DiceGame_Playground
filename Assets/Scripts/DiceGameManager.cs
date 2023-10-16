@@ -295,9 +295,6 @@ public class DiceGameManager : MonoBehaviour
                     }
                 }
 
-                Debug.Log(iStart);
-                Debug.Log(iStartUp);
-
                 while (iStartUp != iStart)
                 {
                     for (int d = 0; d < Dicelist.Length; d++)
