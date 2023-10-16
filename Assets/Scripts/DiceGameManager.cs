@@ -298,7 +298,6 @@ public class DiceGameManager : MonoBehaviour
                             KeepDiceButtons[d].ToggleDice();
                             break;
                         }
-                        else continue;
                     }
 
                     iStartUp--;
