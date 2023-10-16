@@ -314,7 +314,7 @@ public class DiceGameManager : MonoBehaviour
 
                 for (int i = 0; i < DiceValueCount.Length; i++)
                 {
-                    if (DiceValueCount[i] >= 2)
+                    if (DiceValueCount[i] >= 3)
                     {
                         pt1 = i;
                     }
