@@ -304,7 +304,6 @@ public class DiceGameManager : MonoBehaviour
                             break;
                         }
                     }
-
                     iStartUp--;
                 }
 
