@@ -370,7 +370,7 @@ public class DiceGameManager : MonoBehaviour
 
                 if (indexFound != 99) // if there is a value over 1
                 {
-                    if (highestCount >= 2)
+                    if (highestCount == 2)
                     {
                         for (int d = 0; d < Dicelist.Length; d++)
                         {
