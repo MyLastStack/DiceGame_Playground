@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -183,11 +182,27 @@ public class DiceGameManager : MonoBehaviour
 
         int chosenPrio = 99;
 
+        int[] kPrio = new int[6];
+        kPrio[0] = 0; // 3m
+        kPrio[1] = 4; // 2p
+        kPrio[2] = 1; // 4m
+        kPrio[3] = 2; // ss
+        kPrio[4] = 5; // fh
+        kPrio[5] = 3; // ls
+
         for (int i = 0; i < DiceEvaluator.Instance.priority.Length; i++)
         {
             if (DiceEvaluator.Instance.priority[i])
             {
-                chosenPrio = i;
+                for (int d = 0; d < kPrio.Length; d++)
+                {
+                    if (kPrio[i] == d && !GoalGUIManager.Instance.goalButtons[d].m_goalClaimed)
+                    {
+                        chosenPrio = i;
+                        Debug.Log($"{i} - {d}");
+                        break;
+                    }
+                }
             }
         }
 
@@ -384,10 +399,10 @@ public class DiceGameManager : MonoBehaviour
                 }
                 else // If there is a gap but no values over 1
                 {
-                    int keptstr = 0;
+                    int keptstr = 5;
                     for (int i = 0; i < DiceValueCount.Length; i++)
                     {
-                        if (keptstr != 4 && DiceValueCount[i] > 0)
+                        if (keptstr != 0 && DiceValueCount[i] > 0)
                         {
                             for (int d = 0; d < Dicelist.Length; d++)
                             {
@@ -396,11 +411,17 @@ public class DiceGameManager : MonoBehaviour
                                     KeepDiceButtons[d].ToggleDice();
                                     break;
                                 }
-                                else continue;
                             }
-                            keptstr++;
+                            keptstr--;
                         }
-                        else break;
+                        else if (DiceValueCount[i] == 0)
+                        {
+                            if (i == 0)
+                            {
+                                continue;
+                            }
+                            keptstr--;
+                        }
                     }
                 }
                 break;
