@@ -278,29 +278,30 @@ public class DiceGameManager : MonoBehaviour
 
                 for (int i = 0; i < DiceValueCount.Length; i++)
                 {
-                    
-                    if (iStart == 99)
+                    if (DiceValueCount[i] >= 1)
                     {
-                        if (DiceValueCount[i] >= 1)
+                        if (iStart == 99)
                         {
                             iStart = i;
                             iStartUp = iStart;
                         }
-                    }
 
-                    if (iStart != 99)
-                    {
-                        if (DiceValueCount[i] == 0)
+                        if (iStart != 99)
                         {
                             iStart = 99;
                             iStartUp = iStart;
                         }
+                        else
+                        {
+                            iStartUp++;
+                        }
                     }
-                    else
-                    {
-                        iStartUp++;
-                    }
+                    Debug.Log(iStart);
+                    Debug.Log(iStartUp);
                 }
+
+                Debug.Log($"final: {iStart}");
+                Debug.Log($"final: {iStartUp}");
 
                 while (iStartUp != iStart - 1)
                 {
