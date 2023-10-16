@@ -288,13 +288,13 @@ public class DiceGameManager : MonoBehaviour
 
                         if (iStart != 99)
                         {
-                            iStart = 99;
-                            iStartUp = iStart;
-                        }
-                        else
-                        {
                             iStartUp++;
                         }
+                    }
+                    else
+                    {
+                        iStart = 99;
+                        iStartUp = iStart;
                     }
                     Debug.Log(iStart);
                     Debug.Log(iStartUp);
