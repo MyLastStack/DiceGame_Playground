@@ -370,12 +370,16 @@ public class DiceGameManager : MonoBehaviour
                     int keep3 = 3;
                     for (int d = 0; d < Dicelist.Length; d++)
                     {
-                        if (Dicelist[d].newValue - 1 == pt1 && keep3 != 0 || Dicelist[d].newValue - 1 == pt2)
+                        if (Dicelist[d].newValue - 1 == pt1 && keep3 != 0)
                         {
                             if (Dicelist[d].newValue - 1 == pt1)
                             {
                                 keep3--;
                             }
+                            KeepDiceButtons[d].ToggleDice();
+                        }
+                        if (Dicelist[d].newValue - 1 == pt2)
+                        {
                             KeepDiceButtons[d].ToggleDice();
                         }
                     }
