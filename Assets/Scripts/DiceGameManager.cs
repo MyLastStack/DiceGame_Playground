@@ -312,54 +312,47 @@ public class DiceGameManager : MonoBehaviour
             case 4:
                 int pt1 = 99;
                 int pt2 = 99;
-                int pt3 = 99;
 
                 for (int i = 0; i < DiceValueCount.Length; i++)
                 {
                     if (DiceValueCount[i] >= 3)
                     {
                         pt1 = i;
+                    }
+                    if (pt1 != 99 && DiceValueCount[i] >= 1)
+                    {
+                        pt2 = i;
                         break;
                     }
                 }
 
-                for (int i = 0; i < DiceValueCount.Length; i++)
+                if (pt2 == 99)
                 {
-                    if (DiceValueCount[i] >= 2)
-                    {
-                        if (pt2 != 99)
-                        {
-                            pt3 = i;
-                            break;
-                        }
-                        else
-                        {
-                            pt2 = i;
-                        }
-                    }
-                }
 
-                if (pt1 != 99)
-                {
                     for (int d = 0; d < Dicelist.Length; d++)
                     {
                         if (Dicelist[d].newValue - 1 == pt1)
                         {
-                            KeepDiceButtons[d].ToggleDice();
-                        }
-                    }
-                }
-                else if (pt1 == 99 && pt2 != 99 && pt3 != 99)
-                {
-                    for (int d = 0; d < Dicelist.Length; d++)
-                    {
-                        if (Dicelist[d].newValue - 1 == pt2 || Dicelist[d].newValue - 1 == pt3)
-                        {
-                            KeepDiceButtons[d].ToggleDice();
+
                         }
                     }
                 }
 
+                if (pt2 != 99)
+                {
+                    int keep3 = 3;
+                    for (int d = 0; d < Dicelist.Length; d++)
+                    {
+                        if (Dicelist[d].newValue - 1 == pt1 && keep3 != 0 || Dicelist[d].newValue - 1 == pt2)
+                        {
+                            if (Dicelist[d].newValue - 1 == pt1)
+                            {
+                                keep3--;
+                            }
+                            KeepDiceButtons[d].ToggleDice();
+                        }
+                    }
+                }
                 break;
             case 5:
                 int highestCount = 0;
