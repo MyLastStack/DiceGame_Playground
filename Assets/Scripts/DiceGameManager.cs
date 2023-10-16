@@ -367,9 +367,9 @@ public class DiceGameManager : MonoBehaviour
                         }
                     }
 
-                    if (pt1 == 99 && pt2 == 99)
+                    if (pt1 != 99 && pt2 != 99)
                     {
-                        secondType = false;
+                        secondType = true;
                     }
                 }
 
