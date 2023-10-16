@@ -370,7 +370,7 @@ public class DiceGameManager : MonoBehaviour
                             {
                                 if (highestCount < 2)
                                 {
-                                    break;
+                                    continue;
                                 }
                                 else
                                 {
