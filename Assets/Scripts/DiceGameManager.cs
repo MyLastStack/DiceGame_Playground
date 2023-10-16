@@ -322,7 +322,7 @@ public class DiceGameManager : MonoBehaviour
                 bool firstType = false;
                 bool secondType = false;
 
-                if (pt1 == 99 && pt2 == 99)
+                if (pt1 == 99)
                 {
                     for (int i = 0; i < DiceValueCount.Length; i++)
                     {
