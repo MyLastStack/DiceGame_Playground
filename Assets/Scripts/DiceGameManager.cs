@@ -300,9 +300,6 @@ public class DiceGameManager : MonoBehaviour
                     {
                         iStartUp++;
                     }
-
-                    Debug.Log(iStart);
-                    Debug.Log(iStartUp);
                 }
 
                 while (iStartUp != iStart - 1)
