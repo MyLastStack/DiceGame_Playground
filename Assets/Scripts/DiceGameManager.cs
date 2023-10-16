@@ -381,8 +381,10 @@ public class DiceGameManager : MonoBehaviour
                                     highestCount--;
                                 }
                             }
-
-                            KeepDiceButtons[d].ToggleDice();
+                            else
+                            {
+                                KeepDiceButtons[d].ToggleDice();
+                            }
                         }
                     }
                 }
