@@ -409,11 +409,10 @@ public class DiceGameManager : MonoBehaviour
                         }
                         else if (DiceValueCount[i] == 0)
                         {
-                            if (i == 0)
+                            if (i != 0)
                             {
-                                continue;
+                                keptstr--;
                             }
-                            keptstr--;
                         }
                     }
                 }
