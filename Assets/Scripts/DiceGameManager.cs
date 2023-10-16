@@ -298,7 +298,7 @@ public class DiceGameManager : MonoBehaviour
                     }
                     else
                     {
-                        iStartUp--;
+                        iStartUp++;
                     }
 
                     Debug.Log(iStart);
