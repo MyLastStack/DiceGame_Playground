@@ -339,9 +339,9 @@ public class DiceGameManager : MonoBehaviour
                         }
                     }
 
-                    if (pt1 == 99)
+                    if (pt1 != 99)
                     {
-                        firstType = false;
+                        firstType = true;
                     }
                 }
 
