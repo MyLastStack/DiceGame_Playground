@@ -315,7 +315,7 @@ public class DiceGameManager : MonoBehaviour
 
                 for (int i = 0; i < DiceValueCount.Length; i++)
                 {
-                    if (DiceValueCount[i] >= 3)
+                    if (DiceValueCount[i] >= 2)
                     {
                         pt1 = i;
                     }
@@ -326,19 +326,7 @@ public class DiceGameManager : MonoBehaviour
                     }
                 }
 
-                if (pt2 == 99)
-                {
-
-                    for (int d = 0; d < Dicelist.Length; d++)
-                    {
-                        if (Dicelist[d].newValue - 1 == pt1)
-                        {
-
-                        }
-                    }
-                }
-
-                if (pt2 != 99)
+                if (pt1 != 99)
                 {
                     int keep3 = 3;
                     for (int d = 0; d < Dicelist.Length; d++)
