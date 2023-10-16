@@ -302,7 +302,7 @@ public class DiceGameManager : MonoBehaviour
                     }
                 }
 
-                while (iStartUp != iStart)
+                while (iStartUp != iStart - 1)
                 {
                     for (int d = 0; d < Dicelist.Length; d++)
                     {
