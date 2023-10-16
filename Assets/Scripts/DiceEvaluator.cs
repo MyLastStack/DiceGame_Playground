@@ -254,21 +254,34 @@ public class DiceEvaluator : MonoBehaviour
     {
         bool chk1 = false;
         bool chk2 = false;
+        bool chk3 = false;
 
         for (int i = 0; i < dVH.Length; i++)
         {
             if (dVH[i] >= 2 && chk1)
             {
                 chk2 = true;
+                break;
             }
             else
             {
                 chk1 = true;
             }
-            if (chk1 && chk2) break;
         }
 
-        return chk1 && chk2;
+        if (!chk2)
+        {
+            for (int i = 0; i < dVH.Length; i++)
+            {
+                if (dVH[i] >= 3)
+                {
+                    chk3 = true;
+                    break;
+                }
+            }
+        }
+
+        return chk1 && chk2 || chk3;
     }
 
     private bool OneOffFourKind()

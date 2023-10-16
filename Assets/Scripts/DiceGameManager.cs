@@ -93,8 +93,13 @@ public class DiceGameManager : MonoBehaviour
 
         if (rollsLeft == 0)
         {
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.25f);
             ClaimToggle(CountDiceValue);
+        }
+        else if (rollsLeft == rollsMax)
+        {
+            yield return new WaitForSeconds(0.125f);
+            KeepRolls(CountDiceValue);
         }
 
         rollCount += 1;
@@ -117,8 +122,6 @@ public class DiceGameManager : MonoBehaviour
 
     void ClaimToggle(int[] DiceValueCount)
     {
-        DiceEvaluator.Instance.DiceValueToKeep(CountDiceValue);
-
         int[] priority = new int[6];
         priority[0] = 0;
         priority[1] = 4;
@@ -127,7 +130,7 @@ public class DiceGameManager : MonoBehaviour
         priority[4] = 5;
         priority[5] = 3;
 
-        for (int index = 0; index < DiceEvaluator.Instance.category.Length; index++)
+        for (int index = 0; index < DiceValueCount.Length; index++)
         {
             #region other method
             //if (!DiceEvaluator.Instance.category[index])
@@ -156,22 +159,262 @@ public class DiceGameManager : MonoBehaviour
                     if (index == priority[i])
                     {
                         highest = index;
-                        Debug.Log($"Highest: {index} - #{i}");
                     }
                 }
             }
+            else
+            {
+                continue;
+            }
         }
 
-        Debug.Log(highest);
-
-        if (!GoalGUIManager.Instance.goalButtons[highest].m_goalClaimed)
+        if (highest != 99)
         {
-            GoalGUIManager.Instance.goalButtons[highest].Claim();
+            if (!GoalGUIManager.Instance.goalButtons[highest].m_goalClaimed)
+            {
+                GoalGUIManager.Instance.goalButtons[highest].Claim();
+            }
         }
     }
 
     void KeepRolls(int[] DiceValueCount)
     {
+        DiceEvaluator.Instance.DiceValueToKeep(DiceValueCount);
+
+        int chosenPrio = 99;
+
+        for (int i = 0; i < DiceEvaluator.Instance.priority.Length; i++)
+        {
+            if (DiceEvaluator.Instance.priority[i])
+            {
+                chosenPrio = i;
+            }
+            else { continue; }
+        }
+
+        switch (chosenPrio)
+        {
+            case 0:
+                for (int i = 0; i < DiceValueCount.Length; i++)
+                {
+                    if (DiceValueCount[i] >= 2)
+                    {
+                        for (int d = 0; d < Dicelist.Length; d++)
+                        {
+                            if (Dicelist[d].newValue - 1 == i)
+                            {
+                                KeepDiceButtons[d].ToggleDice();
+                            }
+                            else continue;
+                        }
+
+                        break;
+                    }
+                    else continue;
+                }
+                break;
+            case 1:
+                for (int i = 0; i < DiceValueCount.Length; i++)
+                {
+                    if (DiceValueCount[i] >= 2)
+                    {
+                        for (int d = 0; d < Dicelist.Length; d++)
+                        {
+                            if (Dicelist[d].newValue - 1 == i)
+                            {
+                                KeepDiceButtons[d].ToggleDice();
+                            }
+                            else continue;
+                        }
+
+                        break;
+                    }
+                    else continue;
+                }
+                for (int i = 0; i < DiceValueCount.Length; i++)
+                {
+                    if (DiceValueCount[i] >= 1)
+                    {
+                        for (int d = 0; d < Dicelist.Length; d++)
+                        {
+                            if (Dicelist[d].newValue - 1 == i)
+                            {
+                                KeepDiceButtons[d].ToggleDice();
+                            }
+                            else continue;
+                        }
+
+                        break;
+                    }
+                }
+                break;
+            case 2:
+                for (int i = 0; i < DiceValueCount.Length; i++)
+                {
+                    if (DiceValueCount[i] >= 3)
+                    {
+                        for (int d = 0; d < Dicelist.Length; d++)
+                        {
+                            if (Dicelist[d].newValue - 1 == i)
+                            {
+                                KeepDiceButtons[d].ToggleDice();
+                            }
+                            else continue;
+                        }
+
+                        break;
+                    }
+                    else continue;
+                }
+                break;
+            case 3:
+                int iStart = 99; // Default 99
+                int iStartUp = iStart; // Default 99
+
+                for (int i = 0; i < DiceValueCount.Length; i++)
+                {
+                    if (DiceValueCount[i] >= 1 && iStart == 99)
+                    {
+                        iStart = i;
+                        iStartUp = iStart;
+                    }
+                    else if (DiceValueCount[i] == 0 && iStart != 99)
+                    {
+                        iStart = 99;
+                        iStartUp = iStart;
+                    }
+                    else if (DiceValueCount[i] >= 1 && iStart != 99)
+                    {
+                        iStartUp++;
+                    }
+                }
+
+                while (iStartUp != iStart - 1)
+                {
+                    for (int d = 0; d < Dicelist.Length; d++)
+                    {
+                        if (Dicelist[d].newValue - 1 == iStartUp)
+                        {
+                            KeepDiceButtons[d].ToggleDice();
+                            break;
+                        }
+                        else continue;
+                    }
+
+                    iStartUp--;
+                }
+
+                break;
+            case 4:
+                int pt1 = 99;
+                int pt2 = 99;
+                int pt3 = 99;
+
+                for (int i = 0; i < DiceValueCount.Length; i++)
+                {
+                    if (DiceValueCount[i] >= 3)
+                    {
+                        pt1 = i;
+                        break;
+                    }
+                }
+
+                for (int i = 0; i < DiceValueCount.Length; i++)
+                {
+                    if (DiceValueCount[i] >= 2)
+                    {
+                        if (pt2 != 99)
+                        {
+                            pt3 = i;
+                            break;
+                        }
+                        else
+                        {
+                            pt2 = i;
+                        }
+                    }
+                }
+
+                if (pt1 != 99)
+                {
+                    for (int d = 0; d < Dicelist.Length; d++)
+                    {
+                        if (Dicelist[d].newValue - 1 == pt1)
+                        {
+                            KeepDiceButtons[d].ToggleDice();
+                        }
+                    }
+                }
+                else if (pt1 == 99 && pt2 != 99 && pt3 != 99)
+                {
+                    for (int d = 0; d < Dicelist.Length; d++)
+                    {
+                        if (Dicelist[d].newValue - 1 == pt2 || Dicelist[d].newValue - 1 == pt3)
+                        {
+                            KeepDiceButtons[d].ToggleDice();
+                        }
+                    }
+                }
+
+                break;
+            case 5:
+                int highestCount = 0;
+                int indexFound = 0;
+
+                for (int i = 0; i < DiceValueCount.Length; i++)
+                {
+                    if (DiceValueCount[i] == 2)
+                    {
+                        highestCount = 2;
+                        indexFound = i;
+                        break;
+                    }
+                }
+
+                if (indexFound != 0) // if there is a value over 1
+                {
+                    if (highestCount >= 2)
+                    {
+                        for (int d = 0; d < Dicelist.Length; d++)
+                        {
+                            if (Dicelist[d].newValue - 1 == indexFound)
+                            {
+                                if (highestCount >= 2)
+                                {
+                                    highestCount--;
+                                }
+                                else break;
+                            }
+
+                            KeepDiceButtons[d].ToggleDice();
+                        }
+                    }
+                }
+                else // If there is a gap but no values over 1
+                {
+                    int keptstr = 0;
+                    for (int i = 0; i < DiceValueCount.Length; i++)
+                    {
+                        if (keptstr != 4 && DiceValueCount[i] > 0)
+                        {
+                            for (int d = 0; d < Dicelist.Length; d++)
+                            {
+                                if (Dicelist[d].newValue - 1 == i)
+                                {
+                                    KeepDiceButtons[d].ToggleDice();
+                                    break;
+                                }
+                                else continue;
+                            }
+                            keptstr++;
+                        }
+                        else break;
+                    }
+                }
+                break;
+            default:
+                break;
+        }
 
         // Toggle off anything over 1 for straights
         // If a zero is in the middle like 1 1 0 1 1 1
