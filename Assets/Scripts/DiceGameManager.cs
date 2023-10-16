@@ -374,12 +374,9 @@ public class DiceGameManager : MonoBehaviour
                     {
                         for (int d = 0; d < Dicelist.Length; d++)
                         {
-                            if (Dicelist[d].newValue - 1 == indexFound)
+                            if (Dicelist[d].newValue - 1 == indexFound && highestCount == 2)
                             {
-                                if (highestCount >= 2)
-                                {
-                                    highestCount--;
-                                }
+                                highestCount--;
                             }
                             else
                             {
