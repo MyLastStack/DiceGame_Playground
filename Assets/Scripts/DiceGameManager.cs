@@ -276,8 +276,11 @@ public class DiceGameManager : MonoBehaviour
                 int iStart = 99; // Default 99
                 int iStartUp = iStart; // Default 99
 
+                Debug.Log(DiceValueCount.Length);
+
                 for (int i = 0; i < DiceValueCount.Length; i++)
                 {
+                    Debug.Log(DiceValueCount[i]);
                     if (DiceValueCount[i] >= 1)
                     {
                         if (iStart == 99)
