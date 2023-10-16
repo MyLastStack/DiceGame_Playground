@@ -205,12 +205,9 @@ public class DiceGameManager : MonoBehaviour
                             {
                                 KeepDiceButtons[d].ToggleDice();
                             }
-                            else continue;
                         }
-
                         break;
                     }
-                    else continue;
                 }
                 break;
             case 1:
@@ -224,12 +221,9 @@ public class DiceGameManager : MonoBehaviour
                             {
                                 KeepDiceButtons[d].ToggleDice();
                             }
-                            else continue;
                         }
-
                         break;
                     }
-                    else continue;
                 }
                 for (int i = 0; i < DiceValueCount.Length; i++)
                 {
@@ -241,9 +235,7 @@ public class DiceGameManager : MonoBehaviour
                             {
                                 KeepDiceButtons[d].ToggleDice();
                             }
-                            else continue;
                         }
-
                         break;
                     }
                 }
@@ -259,12 +251,9 @@ public class DiceGameManager : MonoBehaviour
                             {
                                 KeepDiceButtons[d].ToggleDice();
                             }
-                            else continue;
                         }
-
                         break;
                     }
-                    else continue;
                 }
                 break;
             case 3:
