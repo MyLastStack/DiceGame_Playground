@@ -27,7 +27,7 @@ public class DiceGameManager : MonoBehaviour
             Instance = this;
             rollCount = 0;
             score = 0;
-            rollsLeft = rollsMax;
+            rollsLeft = 2;
         }
         else
         {
