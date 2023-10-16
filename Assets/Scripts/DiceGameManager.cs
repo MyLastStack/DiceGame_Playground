@@ -288,7 +288,7 @@ public class DiceGameManager : MonoBehaviour
                         iStart = 99;
                         iStartUp = iStart;
                     }
-                    else if (DiceValueCount[i] >= 1 && iStart != 99)
+                    else
                     {
                         iStartUp++;
                     }
