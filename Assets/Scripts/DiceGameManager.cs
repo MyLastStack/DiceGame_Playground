@@ -376,11 +376,7 @@ public class DiceGameManager : MonoBehaviour
                         {
                             if (Dicelist[d].newValue - 1 == indexFound)
                             {
-                                if (highestCount < 2)
-                                {
-                                    continue;
-                                }
-                                else
+                                if (highestCount >= 2)
                                 {
                                     highestCount--;
                                 }
